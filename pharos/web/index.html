@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pharos — Search Engine</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">◈</span>
+    <span class="brand-name">Pharos</span>
+    <span class="brand-sub">local full-text search</span>
+  </div>
+  <div class="search-wrap">
+    <input id="search-input" type="text" autocomplete="off"
+           placeholder='Search… use "exact phrase", path:name, -exclude, OR, word*' />
+    <button id="search-btn">Search</button>
+    <button id="refresh-btn" title="Re-index">↻</button>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="tab active" data-tab="results">Results</button>
+  <button class="tab" data-tab="overview">Overview</button>
+  <button class="tab" data-tab="terms">Terms</button>
+  <button class="tab" data-tab="languages">Languages</button>
+</nav>
+
+<main>
+  <!-- RESULTS -->
+  <section id="tab-results" class="tab-panel active">
+    <div id="result-meta" class="result-meta">Enter a query to search the index.</div>
+    <div id="correction" class="correction hidden"></div>
+    <div id="results" class="results"></div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section id="tab-overview" class="tab-panel">
+    <div class="cards" id="stats-cards"></div>
+    <div class="grid-2">
+      <div class="panel">
+        <h3>Top Terms by Document Frequency</h3>
+        <canvas id="terms-canvas" width="640" height="420"></canvas>
+      </div>
+      <div class="panel">
+        <h3>Documents by Language</h3>
+        <canvas id="lang-canvas" width="640" height="420"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- TERMS -->
+  <section id="tab-terms" class="tab-panel">
+    <div class="panel">
+      <h3>Vocabulary — Term Frequency Cloud</h3>
+      <div id="term-cloud" class="term-cloud"></div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section id="tab-languages" class="tab-panel">
+    <div class="panel">
+      <h3>Index Coverage by Language</h3>
+      <canvas id="lang-bar-canvas" width="1100" height="460"></canvas>
+    </div>
+    <div class="panel">
+      <h3>Extensions</h3>
+      <table class="data-table" id="ext-table">
+        <thead><tr><th>Extension</th><th>Files</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<div id="file-modal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-head">
+      <span id="modal-title"></span>
+      <button id="modal-close">×</button>
+    </div>
+    <pre id="modal-body"></pre>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

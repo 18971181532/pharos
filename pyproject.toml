@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pharos-search"
+version = "0.1.0"
+description = "Pharos — zero-dependency local full-text search engine with BM25 ranking, typo tolerance and a web dashboard"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name = "遥か"}]
+keywords = ["search", "full-text-search", "bm25", "inverted-index", "search-engine", "code-search", "cjk"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Text Processing :: Indexing",
+    "Topic :: Internet :: WWW/HTTP :: Indexing/Search",
+]
+dependencies = []
+
+[project.scripts]
+pharos = "pharos.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/18971181532/pharos"
+
+[tool.setuptools]
+packages = ["pharos"]
+
+[tool.setuptools.package-data]
+pharos = ["web/*.html", "web/*.css", "web/*.js"]
